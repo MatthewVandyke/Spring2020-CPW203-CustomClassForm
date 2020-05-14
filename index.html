@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Add Product From</title>
+        <link rel="stylesheet" href="css/site.css" />
     </head>
     <body>
         <h1>Add Video Game</h1>
@@ -14,12 +15,12 @@
 
         <form>
             <label for="title">Title: </label>
-            <input type="text" id="title">
-            <br>
+            <input type="text" id="title" />
+            <br />
 
             <label for="price">Price: </label>
-            <input type="text" id="price">
-            <br>
+            <input type="text" id="price" />
+            <br />
 
             <label for="rating">Rating: </label>
             <select id="rating">
@@ -28,13 +29,14 @@
                 <option>M</option>
                 <option>T</option>
             </select>
-            <br>
+            <br />
+            <div id="workaround">
+                <input type="checkbox" id="online" />
+                <label id="why" for="online">Online only?</label>
+            </div>
+            <br />
 
-            <input type="checkbox" id="online">
-            <label for="online">Online only?</label>      
-            <br>
-
-            <input type="button" value="Add New Video Game">
+            <input type="button" value="Add New Video Game" />
         </form>
     </body>
 </html>
