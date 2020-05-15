@@ -17,9 +17,17 @@ function addVideoGame() {
 function displayGame(myGame) {
 }
 function getVideoGame() {
-    var myGame = new VideoGame;
-    return myGame;
+    var game = new VideoGame;
+    game.title = $("title").value;
+    game.price = parseFloat($("price").value);
+    game.rating = $("rating").value;
+    game.isDigitalOnly = $("online").checked;
+    console.log(game);
+    return game;
 }
 function isAllDataValid() {
     return true;
+}
+function $(id) {
+    return document.getElementById(id);
 }

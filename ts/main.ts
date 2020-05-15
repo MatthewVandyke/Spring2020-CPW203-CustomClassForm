@@ -31,13 +31,26 @@ function displayGame(myGame:VideoGame):void{
     // 
 }
 
+/**
+ * gets all game data from the form
+ * and returns it in a VideoGame object
+ */
 function getVideoGame():VideoGame{
     // TODO: create game, populate with data, return game
-    let myGame = new VideoGame;
+    let game = new VideoGame;
+    game.title = (<HTMLInputElement>$("title")).value;
+    game.price = parseFloat((<HTMLInputElement>$("price")).value);
+    game.rating = (<HTMLSelectElement>$("rating")).value;
+    game.isDigitalOnly = (<HTMLInputElement>$("online")).checked;
 
-    return myGame;
+    console.log(game);
+    return game;
 }
 
 function isAllDataValid():boolean{
     return true;
+}
+
+function $(id:string){
+    return document.getElementById(id);
 }
