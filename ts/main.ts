@@ -18,11 +18,17 @@ window.onload = function(){
     addBtn.onclick = addVideoGame;
 }
 
+function clearAllErrors():void{
+    let errSummary = $("validation-summary");
+    errSummary.innerText = "";
+}
+
 function addVideoGame(){
     console.log("Add video game was called");
+    clearAllErrors();
 
     if(isAllDataValid()){
-        let game = getVideoGame();
+        let game:VideoGame = getVideoGame();
         displayGame(game);
     }
 }
@@ -69,7 +75,39 @@ function getVideoGame():VideoGame{
 }
 
 function isAllDataValid():boolean{
-    return true;
+    let isValid = true;
+
+    let title = getInputById("title").value;
+    if(title == ""){
+        isValid = false;
+        addErrorMessage("Title is required!");
+    }
+
+    let price = getInputById("price").value;
+    let priceValue = parseFloat(price);
+    if(price == "" || isNaN(priceValue)){
+        isValid = false;
+        addErrorMessage("Must be a valid number!");
+    }
+
+    let rating = (<HTMLOptionElement>$("rating")).value;
+    if(rating == ""){
+        isValid = false;
+        addErrorMessage("You must choose a rating")
+    }
+
+    return isValid
+}
+
+function addErrorMessage(error:string) {
+    let errSummary = $("validation-summary");
+    let errItem = document.createElement("li");
+    errItem.innerText = error;
+    errSummary.appendChild(errItem);
+}
+
+function getInputById(id:string):HTMLInputElement{
+    return <HTMLInputElement>$(id);
 }
 
 function $(id:string){
